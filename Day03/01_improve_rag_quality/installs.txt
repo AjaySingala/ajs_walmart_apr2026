@@ -1,0 +1,5 @@
+pip install openai python-dotenv chromadb
+
+# For demo8.
+pip install PyPDF2
+

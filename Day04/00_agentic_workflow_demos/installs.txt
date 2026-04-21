@@ -1,0 +1,1 @@
+pip install langchain langchain-core langchain-community langchain-text-splitters faiss-cpu openai

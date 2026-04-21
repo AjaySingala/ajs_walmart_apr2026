@@ -1,0 +1,6 @@
+pip install openai python-dotenv
+
+# For demo12.
+pip install faiss
+pip install pypdf
+

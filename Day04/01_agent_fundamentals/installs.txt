@@ -1,0 +1,3 @@
+pip install --upgrade langchain langchain-core langchain-openai langchain-chroma 
+pip install --upgrade chromadb python-dotenv tiktoken
+pip install langgraph

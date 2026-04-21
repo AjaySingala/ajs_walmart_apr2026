@@ -1,0 +1,5 @@
+pip install -U langchain langchain-core langchain-openai langchain-chroma
+pip install -U chromadb openai python-dotenv tiktoken
+
+# openai: Official SDK to call OpenAI APIs directly
+# langchain-openai: LangChain wrapper that makes OpenAI work inside RAG pipelines

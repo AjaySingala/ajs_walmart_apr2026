@@ -1,0 +1,5 @@
+pip install langchain langchain-openai langchain-community langgraph
+pip install faiss-cpu python-dotenv
+
+pip install tiktoken   # token counting (useful for cost awareness later)
+pip install rich       # nicer debug/trace printing (optional)
