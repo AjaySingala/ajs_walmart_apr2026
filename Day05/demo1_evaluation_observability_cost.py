@@ -30,10 +30,6 @@ from langgraph.prebuilt import ToolNode
 import sys
 import os
 
-# Add the folder path (use absolute or relative path)
-folder_path = os.path.join(os.path.dirname(__file__), '../')
-sys.path.insert(0, folder_path)
-
 import config
 
 # Start.
@@ -309,6 +305,21 @@ def estimate_cost(input_text: str, output_text: str):
         "cost_per_1k_queries": f"${(total_cost * 1000):.4f}"
     }
 
+
+# Tool routing
+def post_tool_router(state: AgentState):
+    # print(f"\n post_tool_router...")
+    last_msg = state["messages"][-1]
+    retry_count = state.get("retry_count", 0)
+
+    if "NO_CONTEXT" in str(last_msg):
+        if retry_count < MAX_RETRIES:
+            return "retry"
+        else:
+            return "agent"
+
+    return "agent"
+
 # -------------------------
 # BUILD GRAPH (EXTENDED)
 # -------------------------
@@ -327,21 +338,6 @@ graph.add_conditional_edges(
     should_continue,
     {"tools": "tools", END: "evaluate"},
 )
-
-# Tool routing
-def post_tool_router(state: AgentState):
-    # print(f"\n post_tool_router...")
-    last_msg = state["messages"][-1]
-    retry_count = state.get("retry_count", 0)
-
-    if "NO_CONTEXT" in str(last_msg):
-        if retry_count < MAX_RETRIES:
-            return "retry"
-        else:
-            return "agent"
-
-    return "agent"
-
 
 graph.add_conditional_edges(
     "tools",
@@ -362,15 +358,15 @@ app = graph.compile()
 # DEMOS
 # -------------------------
 if __name__ == "__main__":
-    # print("\n=== Demo 1: Poor Output ===")
+    print("\n=== Demo 1: Poor Output ===")
 
-    # result = app.invoke({
-    #     "messages": [HumanMessage(content="???")],
-    #     "retry_count": 0,
-    #     "traces": []
-    # })
+    result = app.invoke({
+        "messages": [HumanMessage(content="???")],
+        "retry_count": 0,
+        "traces": []
+    })
 
-    # print("Final:", result["messages"][-1].content)
+    print("Final:", result["messages"][-1].content)
 
     print("\n=== Demo 2: Good Query ===")
 

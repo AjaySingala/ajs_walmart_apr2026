@@ -30,10 +30,6 @@ from langgraph.prebuilt import ToolNode
 import sys
 import os
 
-# Add the folder path (use absolute or relative path)
-folder_path = os.path.join(os.path.dirname(__file__), '../')
-sys.path.insert(0, folder_path)
-
 import config
 
 # Start.
