@@ -14,6 +14,8 @@ sys.path.insert(0, folder_path)
 import config
 
 # Start.
+import demo1_chromadb_index
+
 llm_client = OpenAI()
 
 embedding_function = OpenAIEmbeddingFunction(
@@ -57,6 +59,7 @@ def is_relevant(docs, distances, threshold=0.8):
 
 def generate_strict_answer(query, docs):
     """Generate answer ONLY from context"""
+    print(f"\n query: {query}")
     context = "\n".join(docs)
 
     prompt = f"""
@@ -85,6 +88,7 @@ def generate_strict_answer(query, docs):
 # ---- Query ----
 query = "How is AI used in supply chain?"
 # query = "What is quantum computing?"  # intentionally outside domain
+# query = "What is the GDP of France?"
 
 docs, distances = retrieve_docs(query)
 
