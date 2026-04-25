@@ -56,6 +56,8 @@ def search(query, top_k=5, filters=None):
         np.array([query_embedding]),
         top_k
     )
+    # print(f"\n Distances: {distances}")
+    # print(f"\n Indices: {indices}")
 
     results = []
     for i, idx in enumerate(indices[0]):
