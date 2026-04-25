@@ -21,7 +21,7 @@ import config
 # Start.
 client = OpenAI()
 
-chroma_client = chromadb.PersistentClient(path="./chroma_db_pdf")
+chroma_client = chromadb.PersistentClient(path="./chroma_db")
 collection = chroma_client.get_or_create_collection(name="pdf_rag_demo")
 
 # ================================
