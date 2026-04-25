@@ -2,3 +2,5 @@ pip install openai python-dotenv
 pip install faiss
 pip install pypdf
 
+# For VM:
+pip install faiss-cpu

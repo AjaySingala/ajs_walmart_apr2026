@@ -64,6 +64,7 @@ def chunk_text(text, chunk_size=200, overlap=50):
         chunks.append(chunk)
         start += chunk_size - overlap
 
+    print(f"\n Chunks: {chunks}")
     return chunks
 
 
@@ -221,6 +222,7 @@ def demo3():
     )
 
     print("\n--- DEMO 3 (QUERY REWRITE) ---")
+    print("Original:", QUERY)
     print("Rewrite:", rewrite)
     print(res.choices[0].message.content)
 
@@ -288,6 +290,7 @@ def demo5():
     context = ""
     for i, d in enumerate(docs, 1):
         context += f"[Source {i}]: {d}\n"
+    print(f"\n Context: {context}")
 
     res = client.chat.completions.create(
         model=os.getenv("MODEL_NAME"),
