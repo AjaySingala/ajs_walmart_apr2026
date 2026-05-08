@@ -37,6 +37,7 @@ retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
 
 # -------------------------
 # STEP 3: Tool
+# @tool decorator.
 # -------------------------
 @tool
 def rag_search(query: str) -> str:

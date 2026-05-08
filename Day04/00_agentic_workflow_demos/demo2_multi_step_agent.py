@@ -21,7 +21,10 @@ import config
 splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=0)
 chunks = splitter.split_documents(docs)
 
+# Default model: text-embedding-3-small.
+# Default env var: OPENAI_API_KEY.
 embeddings = OpenAIEmbeddings()
+
 vectorstore = FAISS.from_documents(chunks, embeddings)
 retriever = vectorstore.as_retriever()
 

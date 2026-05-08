@@ -45,6 +45,7 @@ llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 # -------------------------
 # STEP 3: TOOLS
+# RAG Search Tool
 # -------------------------
 @tool
 def rag_search(query: str) -> str:
@@ -52,8 +53,8 @@ def rag_search(query: str) -> str:
     
     results = vectorstore.similarity_search_with_score(query, k=2)
 
-    # for doc, score in results:
-    #     print(f"content: {doc.page_content} (Score: {score})")
+    for doc, score in results:
+        print(f"content: {doc.page_content} (Score: {score})")
 
     if not results:
         return "NO_CONTEXT"
@@ -207,6 +208,7 @@ graph.add_conditional_edges(
     },
 )
 
+
 # After tool → check if retry needed
 def post_tool_router(state: AgentState):
     print("post_tool_router()...")
@@ -268,5 +270,3 @@ if __name__ == "__main__":
 # If I spend $120 per day for 3 days, how much reimbursement?
 # If I spend twenty dollars per day for three days, how much reimbursement?
 # I spent 50 per day for 4 days
-
-
