@@ -102,6 +102,9 @@ def calculate_reimbursement(text: str) -> str:
 
         total = amount_per_day * days
 
+        # Get the reimbursement limit from the RAG
+        # And see if the "total" exceeds the limit.
+        
         return f"Total reimbursement = ${total}"
 
     except Exception as e:

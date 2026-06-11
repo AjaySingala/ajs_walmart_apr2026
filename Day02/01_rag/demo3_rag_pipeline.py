@@ -46,6 +46,7 @@ def similarity(a, b):
 # Query
 query = "What is the meal allowance for employees?"
 # query = "What is the internet reimbursement policy?"
+# query = "Can i order 2 meals worth ₹1500 each on the same day?"
 
 # Embed query.
 print(f"\n Embed query...")
@@ -71,6 +72,8 @@ Context:
 
 Question:
 {query}
+
+Describe the answer in an elaborate and easy to understand way. 
 """
 
 # Call LLM with grounded context.
@@ -80,9 +83,11 @@ response = client.chat.completions.create(
     messages=[
         {"role": "system", "content": "You are a precise assistant."},
         {"role": "user", "content": augmented_prompt}
-    ]
+    ],
+    temperature=1.0
 )
 
+print(f"Query: {query}")
 print("\n--- RAG Response (Grounded) ---")
 print(response.choices[0].message.content)
 

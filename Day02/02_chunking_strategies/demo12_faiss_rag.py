@@ -209,8 +209,10 @@ if __name__ == "__main__":
 
     rag = FAISSRAGPipeline()
 
-    result = rag.run(folder_path, query, filter_type="pdf")  # try "pdf" or "text"
+    # result = rag.run(folder_path, query, filter_type="pdf")  # try "pdf" or "text"
+    result = rag.run(folder_path, query)
 
+    print(f"\nQuery: {query}")
     print("\n=== SOURCES ===\n")
 
     for item in result["sources"]:

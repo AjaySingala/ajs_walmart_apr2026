@@ -8,7 +8,7 @@ from demo3_overlap_chunking import overlapping_chunk
 class RAGPipeline:
     """Production-ready RAG with multi-document + source attribution"""
 
-    def __init__(self, strategy="recursive", chunk_size=80, overlap=20):
+    def __init__(self, strategy="recursive", chunk_size=100, overlap=20):
         self.strategy = strategy
         self.chunk_size = chunk_size
         self.overlap = overlap
@@ -114,7 +114,8 @@ if __name__ == "__main__":
 
     query = "How does Walmart improve customer satisfaction?"
 
-    rag = RAGPipeline(strategy="overlap")
+    rag = RAGPipeline(strategy="fixed")
+    # rag = RAGPipeline(strategy="recursive")
     result = rag.run(folder_path, query)
 
     print("\n=== FINAL ANSWER ===\n")

@@ -14,7 +14,7 @@ sys.path.insert(0, folder_path)
 import config
 
 # Start.
-client = OpenAI()
+client = OpenAI()   # Looks for default env var OPENAI_API_KEY.
 
 index = None
 documents = []
@@ -56,8 +56,8 @@ def search(query, top_k=5, filters=None):
         np.array([query_embedding]),
         top_k
     )
-    # print(f"\n Distances: {distances}")
-    # print(f"\n Indices: {indices}")
+    print(f"\n Distances: {distances}")
+    print(f"\n Indices: {indices}")
 
     results = []
     for i, idx in enumerate(indices[0]):
@@ -98,6 +98,8 @@ add_document("doc3", "Personalization drives e-commerce growth.", {"category": "
 
 query = "How is AI used in supply chain?"
 
+print(f"\n Query: {query}")
+
 # Without filter
 docs = search(query)
 print("\nAnswer (Unfiltered):")
@@ -106,4 +108,7 @@ print(generate_answer(query, docs))
 # With filter
 docs_filtered = search(query, filters={"region": "India"})
 print("\nAnswer (Filtered - India):")
+# docs_filtered = search(query, filters={"category": "marketing"})
+# print("\nAnswer (Filtered - Marketing):")
+
 print(generate_answer(query, docs_filtered))

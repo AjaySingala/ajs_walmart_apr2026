@@ -73,7 +73,7 @@ Rules:
 # CHATBOT LOOP
 # -------------------------
 if __name__ == "__main__":
-    print("=== RAG Agent Chatbot (LangChain 1.2) ===")
+    print("=== RAG Agent Chatbot ===")
     print("Type 'exit' to quit\n")
 
     while True:

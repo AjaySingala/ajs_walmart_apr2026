@@ -1,1 +1,2 @@
-pip install langchain langchain-openai langchain-chroma chromadb python-dotenv tiktoken
+pip install langchain langchain-openai langchain-chroma langchain-community chromadb python-dotenv tiktoken
+pip install faiss-cpu

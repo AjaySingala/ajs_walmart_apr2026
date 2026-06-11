@@ -240,10 +240,10 @@ if __name__ == "__main__":
     # demo_3_scores()
     # time.sleep(2)
 
-    demo_4_threshold()
-    time.sleep(2)
-
-    # demo_5_context_limit()
+    # demo_4_threshold()
     # time.sleep(2)
 
-    # demo_6_metadata_filter()
+    demo_5_context_limit()
+    time.sleep(2)
+
+    demo_6_metadata_filter()

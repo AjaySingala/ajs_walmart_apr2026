@@ -19,7 +19,7 @@ import config
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 EMBED_MODEL = os.getenv("TEXT_EMBEDDING_MODEL") or "text-embedding-3-small"
-CHAT_MODEL = os.getenv("MODEL_NAME") or "gpt-4.1-mini"
+CHAT_MODEL = os.getenv("MODEL_NAME") or "gpt-4.0.mini"
 
 # ================================
 # GLOBAL VECTOR STORE (FAISS)

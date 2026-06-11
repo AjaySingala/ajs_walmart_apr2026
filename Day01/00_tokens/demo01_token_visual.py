@@ -41,46 +41,47 @@ response = client.chat.completions.create(
     temperature=0
 )
 
+print("\n")
 print(response.choices[0].message.content)
 
-# STEP 3: Visual attention heatmap.
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+# # STEP 3: Visual attention heatmap.
+# import numpy as np
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 
-tokens = ["AI", "transforms", "business", "decision"]
+# tokens = ["AI", "transforms", "business", "decision"]
 
-np.random.seed(42)
-embeddings = np.random.rand(len(tokens), 4)
+# np.random.seed(42)
+# embeddings = np.random.rand(len(tokens), 4)
 
-attention_scores = embeddings @ embeddings.T
+# attention_scores = embeddings @ embeddings.T
 
-def softmax(x):
-    e_x = np.exp(x - np.max(x))
-    return e_x / e_x.sum(axis=-1, keepdims=True)
+# def softmax(x):
+#     e_x = np.exp(x - np.max(x))
+#     return e_x / e_x.sum(axis=-1, keepdims=True)
 
-attention_weights = softmax(attention_scores)
+# attention_weights = softmax(attention_scores)
 
-plt.figure(figsize=(6, 5))
-sns.heatmap(
-    attention_weights,
-    annot=True,
-    xticklabels=tokens,
-    yticklabels=tokens,
-    cmap="Blues"
-)
+# plt.figure(figsize=(6, 5))
+# sns.heatmap(
+#     attention_weights,
+#     annot=True,
+#     xticklabels=tokens,
+#     yticklabels=tokens,
+#     cmap="Blues"
+# )
 
-plt.title("Attention Mechanism (Conceptual Visualization)")
-plt.xlabel("Words being attended to")
-plt.ylabel("Current word")
-plt.show()
+# plt.title("Attention Mechanism (Conceptual Visualization)")
+# plt.xlabel("Words being attended to")
+# plt.ylabel("Current word")
+# plt.show()
 
 # STEP 4: Token count → cost awareness.
 prompt = "Explain how AI helps in fraud detection in banking."
 
 tokens = encoding.encode(prompt)
 
-print("Prompt:", prompt)
+print("\nPrompt:", prompt)
 print("Token count:", len(tokens))
 for t in tokens:
     print(f"{t} -> '{encoding.decode([t])}'")
