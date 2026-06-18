@@ -38,6 +38,40 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=0)
 chunks = splitter.split_documents(docs)
 
 embeddings = OpenAIEmbeddings()
+# Store all embedding vectors in a list
+embedding_vectors = []
+
+# Generate embeddings for each chunk and print them
+for i, chunk in enumerate(chunks):
+    # If chunk is a Document object
+    text = chunk.page_content if hasattr(chunk, 'page_content') else chunk
+    
+    embedding_vector = embeddings.embed_query(text)
+    embedding_vectors.append(embedding_vector)  # Append to list
+
+    # print(f"Chunk: {text}")
+    # print(f"Embedding for chunk {i}: {embedding_vector[:5]}...")  # Print first 5 values
+    # print(f"Embedding length: {len(embedding_vector)}")
+
+# Now all_embedding_vectors contains all embeddings
+print(f"Total embeddings stored: {len(embedding_vectors)}")
+
+# # If you want embeddings for all chunks at once, you can also use:
+# # For multiple texts at once
+# embedding_vectors = embeddings.embed_documents([chunk.page_content for chunk in chunks])
+# print(f"Number of embedding vectors: {len(embedding_vectors)}")
+# print(f"Each vector dimension: {len(embedding_vectors[0])}")
+# print(f"First chunk's first 5 values: {embedding_vectors[0][:5]}")
+
+# # Print the embedding values
+# for i, embedding_vector in enumerate(embedding_vectors):
+#     print(f"\nChunk {i}: '{chunks[i].page_content[:50]}...'")
+#     print(f"Embedding length: {len(embedding_vector)}")
+#     print(f"First 10 values: {embedding_vector[:10]}")
+#     # To print ALL values:
+#     # print(f"All values: {embedding_vector}")
+
+# Then create the vectorstore
 vectorstore = FAISS.from_documents(chunks, embeddings)
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
