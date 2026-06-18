@@ -233,6 +233,7 @@ demo4_documents = [
     Document("Employees should maintain work-life balance.", metadata={"source": "WellnessPolicy"}),
     Document("Leave balance dashboards are available in HR systems.", metadata={"source": "AnalyticsPolicy"}),
     Document("Managers approve project timelines.", metadata={"source": "ProjectPolicy"}),
+    Document("Employees are allowed to book first class flights for international travel.", metadata={"source": "TravelPolicy"}),
 ]
 
 
@@ -272,6 +273,9 @@ def demo4_fix():
     question = "Explain the leave policy"
 
     docs = retriever.invoke(question)
+    
+    # Determine the query category.
+    # Use that category as a filter.
 
     # Manual filtering (FAISS workaround)
     docs = [d for d in docs if d.metadata.get("source") == "LeavePolicy"]
@@ -290,10 +294,10 @@ def demo4_fix():
 
 if __name__ == "__main__":
 
-    demo1_baseline()
-    demo2_hallucination()
-    demo3_low_relevance()
-    demo3_fix()
+    # demo1_baseline()
+    # demo2_hallucination()
+    # demo3_low_relevance()
+    # demo3_fix()
 
     demo4_noise()
     demo4_fix()

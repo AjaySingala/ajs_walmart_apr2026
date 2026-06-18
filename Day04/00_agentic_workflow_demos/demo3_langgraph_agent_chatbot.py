@@ -51,7 +51,7 @@ llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 def rag_search(query: str) -> str:
     """Search company policy with relevance filtering"""
     
-    results = vectorstore.similarity_search_with_score(query, k=2)
+    results = vectorstore.similarity_search_with_score(query, k=5)
 
     for doc, score in results:
         print(f"content: {doc.page_content} (Score: {score})")
@@ -61,6 +61,7 @@ def rag_search(query: str) -> str:
 
     # 🔥 KEY LOGIC: threshold
     threshold = 0.5  # adjust for demo
+    # threshold = 0.43  # adjust for demo
     # threshold = 1.2  # adjust for demo
     # NOTE:
     # FAISS returns distance, not similarity.
@@ -121,6 +122,7 @@ class AgentState(TypedDict):
     retry_count: int
 
 MAX_RETRIES = 2
+
 
 # -------------------------
 # STEP 5: LLM NODE (Agent Brain)
@@ -190,27 +192,6 @@ def retry_node(state: AgentState):
 # -------------------------
 tool_node = ToolNode(tools)
 
-# -------------------------
-# BUILD GRAPH
-# -------------------------
-graph = StateGraph(AgentState)
-
-graph.add_node("agent", agent_node)
-graph.add_node("tools", tool_node)
-graph.add_node("retry", retry_node)
-
-graph.set_entry_point("agent")
-
-# Agent decides → tool or finish
-graph.add_conditional_edges(
-    "agent",
-    should_continue,
-    {
-        "tools": "tools",
-        END: END,
-    },
-)
-
 
 # After tool → check if retry needed
 def post_tool_router(state: AgentState):
@@ -232,6 +213,27 @@ def post_tool_router(state: AgentState):
             return "agent"   # let agent choose fallback tool
 
     return "agent"
+
+# -------------------------
+# BUILD GRAPH
+# -------------------------
+graph = StateGraph(AgentState)
+
+graph.add_node("agent", agent_node)
+graph.add_node("tools", tool_node)
+graph.add_node("retry", retry_node)
+
+graph.set_entry_point("agent")
+
+# Agent decides → tool or finish
+graph.add_conditional_edges(
+    "agent",
+    should_continue,
+    {
+        "tools": "tools",
+        END: END,
+    },
+)
 
 graph.add_conditional_edges(
     "tools",

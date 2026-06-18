@@ -99,7 +99,7 @@ class RAGPipeline:
     def run(self, folder_path, query):
         """End-to-end RAG for multiple documents"""
         self.index_documents(folder_path)
-        retrieved = self.retrieve(query)
+        retrieved = self.retrieve(query, 2)
         answer = self.generate(query, retrieved)
 
         return {
@@ -117,6 +117,9 @@ if __name__ == "__main__":
     rag = RAGPipeline(strategy="fixed")
     # rag = RAGPipeline(strategy="recursive")
     result = rag.run(folder_path, query)
+
+    print("\n=== QUERY ===\n")
+    print(f"{query}")
 
     print("\n=== FINAL ANSWER ===\n")
     print(result["answer"])
