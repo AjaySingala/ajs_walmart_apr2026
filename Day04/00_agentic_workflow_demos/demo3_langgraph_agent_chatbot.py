@@ -57,7 +57,7 @@ for i, chunk in enumerate(chunks):
 print(f"Total embeddings stored: {len(embedding_vectors)}")
 
 # # If you want embeddings for all chunks at once, you can also use:
-# # For multiple texts at once
+# # For multiple texts at once: More efficient.
 # embedding_vectors = embeddings.embed_documents([chunk.page_content for chunk in chunks])
 # print(f"Number of embedding vectors: {len(embedding_vectors)}")
 # print(f"Each vector dimension: {len(embedding_vectors[0])}")
