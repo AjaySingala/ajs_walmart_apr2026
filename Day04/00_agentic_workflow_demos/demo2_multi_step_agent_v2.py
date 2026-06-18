@@ -213,6 +213,7 @@ def run_workflow(query):
 
     print("Relevant:", relevant)
 
+    qry = query     # Default.
     # Retry Retrieval
     if not relevant:
 
@@ -224,6 +225,7 @@ def run_workflow(query):
         print(rewritten_query)
 
         context = retrieve(rewritten_query)
+        qry = rewritten_query
 
         print("\nNew Context:")
         print(context)
@@ -231,7 +233,7 @@ def run_workflow(query):
     print("\n========== STEP 4 - Generate Answer ==========")
 
     answer = generate_answer(
-        query,
+        qry,        # Either the original query or the rewritten query.
         context
     )
 

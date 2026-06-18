@@ -53,6 +53,7 @@ def rag_search(query: str) -> str:
     
     results = vectorstore.similarity_search_with_score(query, k=5)
 
+    print("\n --- Retrieved Content ---")
     for doc, score in results:
         print(f"content: {doc.page_content} (Score: {score})")
 
@@ -76,6 +77,10 @@ def rag_search(query: str) -> str:
     for doc, score in results:
         if score < threshold:   # lower score = more relevant (FAISS)
             filtered.append(doc.page_content)
+
+    print(f"\n --- Filtered Content - Score < {threshold} ---")
+    for doc in filtered:
+        print(f"content: {doc}")
 
     if not filtered:
         return "NO_CONTEXT"
