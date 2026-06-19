@@ -72,8 +72,8 @@ def rag_search(query: str) -> str:
         return "NO_CONTEXT"
 
     # 🔥 KEY LOGIC: threshold
-    # threshold = 0.5  # adjust for demo
-    threshold = 1.2  # adjust for demo
+    threshold = 0.5  # adjust for demo
+    # threshold = 1.2  # adjust for demo
     # NOTE:
     # FAISS returns distance, not similarity.
     # Lower score = More similar.
