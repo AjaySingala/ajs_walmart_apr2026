@@ -140,3 +140,13 @@ if __name__ == "__main__":
 
     embedding_result = pipeline.run_embedding_task(texts)
     print(embedding_result)
+
+    print("\n=== EMBEDDINGS - AGAIN ===")
+    texts = [
+        "This is statement 1.",
+        "This is statement 2.",
+        "This is statement 3."
+    ]
+
+    embedding_result = pipeline.run_embedding_task(texts)
+    print(embedding_result)

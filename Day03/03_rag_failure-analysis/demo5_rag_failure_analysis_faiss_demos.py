@@ -108,7 +108,8 @@ Question:
 
     docs = retriever.invoke(question)
     context = format_docs(docs)
-
+    # for loop here to print the docs.
+    
     response = get_llm().invoke(prompt.format(context=context, question=question))
 
     print(f"\n Question: {question}")
@@ -294,10 +295,10 @@ def demo4_fix():
 
 if __name__ == "__main__":
 
-    # demo1_baseline()
-    # demo2_hallucination()
-    # demo3_low_relevance()
-    # demo3_fix()
+    demo1_baseline()
+    demo2_hallucination()
+    demo3_low_relevance()
+    demo3_fix()
 
     demo4_noise()
     demo4_fix()

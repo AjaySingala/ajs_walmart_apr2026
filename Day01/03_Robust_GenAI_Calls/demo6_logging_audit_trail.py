@@ -58,7 +58,7 @@ def llm_call(prompt: str) -> str:
     return response.choices[0].message.content
 
 
-def call_llm_with_logging(prompt: str, retries: int = 3, timeout: int = 5) -> str:
+def call_llm_with_logging(prompt: str, retries: int = 3, timeout: int = 50) -> str:
     """
     Robust LLM wrapper with:
     - Retry

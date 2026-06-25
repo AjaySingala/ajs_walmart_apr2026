@@ -104,13 +104,13 @@ for result in results:
     print(f"Text: {result['text']}")
     print("-" * 50)
 
-# # Show Top-K Results Only
-# top_k = 2
-# print("\n" + "=" * 50)
-# print("\n🔍 Query:", query)
-# print(f"\nTop-{top_k} Matches:\n")
+# Show Top-K Results Only
+top_k = 2
+print("\n" + "=" * 50)
+print("\n🔍 Query:", query)
+print(f"\nTop-{top_k} Matches:\n")
 
-# for result in results[:top_k]:
-#     print(f"Score: {result['similarity']:.4f}")
-#     print(f"Text: {result['text']}")
-#     print("-" * 50)
+for result in results[:top_k]:
+    print(f"Score: {result['similarity']:.4f}")
+    print(f"Text: {result['text']}")
+    print("-" * 50)

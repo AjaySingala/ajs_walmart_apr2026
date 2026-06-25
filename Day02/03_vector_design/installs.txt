@@ -1,6 +1,6 @@
 pip install openai python-dotenv
-pip install faiss
+pip install faiss       # On GPU-enabled machines.
 pip install pypdf
 
 # For VM:
-pip install faiss-cpu
+pip install faiss-cpu   # Machines not GPU-enabled (some VMs).

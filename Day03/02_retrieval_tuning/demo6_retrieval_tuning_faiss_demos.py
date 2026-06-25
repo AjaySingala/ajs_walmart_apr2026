@@ -108,7 +108,7 @@ def demo_4_threshold():
         original_context += doc.page_content + f" (Score: {score})\n"
 
     # threshold = 0.5  # NOTE: FAISS (default in LangChain) uses DISTANCE, not similarity
-    threshold = 0.95  # Tune this live.
+    threshold = 1.10  # Tune this live.
     # For "distance", lower is better.
     filtered_docs = [doc for doc, score in results if score < threshold]
 
@@ -165,7 +165,7 @@ def demo_5_context_limit():
     # Sort by relevance (higher score = better in FAISS)
     sorted_docs = sorted(results, key=lambda x: x[1], reverse=True)
 
-    max_chars = 50
+    max_chars = 500
     context = ""
 
     for doc, score in sorted_docs:

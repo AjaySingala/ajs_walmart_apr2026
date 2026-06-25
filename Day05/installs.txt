@@ -3,3 +3,6 @@ pip install faiss-cpu python-dotenv
 
 pip install tiktoken   # token counting (useful for cost awareness later)
 pip install rich       # nicer debug/trace printing (optional)
+
+# For demo3.
+pip install langsmith

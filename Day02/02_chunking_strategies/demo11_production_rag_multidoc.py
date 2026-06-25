@@ -114,8 +114,8 @@ if __name__ == "__main__":
 
     query = "How does Walmart improve customer satisfaction?"
 
-    rag = RAGPipeline(strategy="fixed")
-    # rag = RAGPipeline(strategy="recursive")
+    # rag = RAGPipeline(strategy="fixed")
+    rag = RAGPipeline(strategy="recursive")
     result = rag.run(folder_path, query)
 
     print("\n=== QUERY ===\n")
