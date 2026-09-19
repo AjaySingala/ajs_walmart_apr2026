@@ -44,11 +44,11 @@ def similarity(a, b):
     return sum(x*y for x, y in zip(a, b))
 
 # Query
-# query = "What is the meal allowance for employees?"
+query = "What is the meal allowance for employees?"
 # query = "What is the internet reimbursement policy?"
 # query = "Can i order 2 meals worth ₹1500 each on the same day?"
 # query = "What is GDP?"
-query = "What is the cap on hotel stay?"
+# query = "What is the cap on hotel stay?"
 
 # Embed query.
 print(f"\n Embed query...")

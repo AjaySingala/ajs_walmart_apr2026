@@ -26,9 +26,9 @@ import os
 # # Set your API key externally for security
 # LANGCHAIN_API_KEY=""
 
-print(os.getenv("LANGCHAIN_TRACING"))
-print(os.getenv("LANGCHAIN_API_KEY"))
-print(os.getenv("LANGCHAIN_PROJECT"))
+# print(f"LANGCHAIN_TRACING: {os.getenv("LANGCHAIN_TRACING")}")
+# print(f"LANGCHAIN_API_KEY: {os.getenv("LANGCHAIN_API_KEY")}")
+# print(f"LANGCHAIN_PROJECT: {os.getenv("LANGCHAIN_PROJECT")}")
 
 # print(os.getenv("LANGSMITH_TRACING"))
 # print(os.getenv("LANGSMITH_API_KEY"))

@@ -56,7 +56,7 @@ for i, chunk in enumerate(chunks):
 # Now all_embedding_vectors contains all embeddings
 print(f"Total embeddings stored: {len(embedding_vectors)}")
 
-# # If you want embeddings for all chunks at once, you can also use:
+# # To get embeddings for all chunks at once, use:
 # # For multiple texts at once: More efficient.
 # embedding_vectors = embeddings.embed_documents([chunk.page_content for chunk in chunks])
 # print(f"Number of embedding vectors: {len(embedding_vectors)}")
@@ -262,6 +262,7 @@ graph.add_node("agent", agent_node)
 graph.add_node("tools", tool_node)
 graph.add_node("retry", retry_node)
 
+# graph.add_edge("agent", START)
 graph.set_entry_point("agent")
 
 # Agent decides → tool or finish

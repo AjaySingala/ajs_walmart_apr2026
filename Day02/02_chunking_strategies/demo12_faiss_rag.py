@@ -21,6 +21,8 @@ class FAISSRAGPipeline:
     # -----------------------------
     def load_documents(self, folder_path):
         """Load TXT and PDF files"""
+        print("load_documents()...")
+
         docs = []
 
         for filename in os.listdir(folder_path):
@@ -51,6 +53,8 @@ class FAISSRAGPipeline:
     # -----------------------------
     def chunk_and_embed(self, docs):
         """Chunk documents and generate embeddings"""
+        print("chunk_and_embed()...")
+
         all_embeddings = []
 
         for doc in docs:
@@ -74,6 +78,8 @@ class FAISSRAGPipeline:
     # -----------------------------
     def build_index(self, folder_path):
         """Create FAISS index"""
+        print("build_index()...")
+
         docs = self.load_documents(folder_path)
         embeddings = self.chunk_and_embed(docs)
 
@@ -86,6 +92,8 @@ class FAISSRAGPipeline:
     # -----------------------------
     def retrieve(self, query, top_k=5, filter_type=None):
         """Retrieve top-k with optional metadata filtering"""
+        print("retrieve()...")
+
         query_embedding = np.array([get_embedding(query)]).astype("float32")
 
         distances, indices = self.index.search(query_embedding, top_k * 2)
@@ -115,6 +123,7 @@ class FAISSRAGPipeline:
     # -----------------------------
     def rerank(self, query, retrieved_chunks, top_k=3):
         """Rerank using LLM (semantic refinement)"""
+        print("rerank()...")
 
         prompt = f"""
         Given the query and chunks, rank the most relevant ones.
@@ -144,6 +153,7 @@ class FAISSRAGPipeline:
     # -----------------------------
     def generate_stream(self, query, chunks):
         """Streaming answer generation"""
+        print("generate_stream()...")
 
         context = "\n\n".join([c["text"] for c in chunks])
 
@@ -181,6 +191,7 @@ class FAISSRAGPipeline:
     # -----------------------------
     def run(self, folder_path, query, filter_type=None):
         """End-to-end execution"""
+        print("run()...")
 
         self.build_index(folder_path)
 

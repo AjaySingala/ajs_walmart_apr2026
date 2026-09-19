@@ -107,8 +107,8 @@ def demo_4_threshold():
     for doc, score in results:
         original_context += doc.page_content + f" (Score: {score})\n"
 
-    # threshold = 0.5  # NOTE: FAISS (default in LangChain) uses DISTANCE, not similarity
-    threshold = 1.10  # Tune this live.
+    threshold = 0.5  # NOTE: FAISS (default in LangChain) uses DISTANCE, not similarity
+    # threshold = 1.10  # Tune this live.
     # For "distance", lower is better.
     filtered_docs = [doc for doc, score in results if score < threshold]
 
@@ -231,17 +231,17 @@ def demo_6_metadata_filter():
 # Run all demos
 # --------------------------------------------------
 if __name__ == "__main__":
-    # demo_1_baseline()
-    # time.sleep(2)
+    demo_1_baseline()
+    time.sleep(2)
 
-    # demo_2_topk()
-    # time.sleep(2)
+    demo_2_topk()
+    time.sleep(2)
 
-    # demo_3_scores()
-    # time.sleep(2)
+    demo_3_scores()
+    time.sleep(2)
 
-    # demo_4_threshold()
-    # time.sleep(2)
+    demo_4_threshold()
+    time.sleep(2)
 
     demo_5_context_limit()
     time.sleep(2)

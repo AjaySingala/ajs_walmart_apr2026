@@ -370,8 +370,9 @@ if __name__ == "__main__":
 
     print("\n=== Demo 2: Good Query ===")
 
-    # query = "If I spend $120 per day for 3 days, how much reimbursement?"
-    query = "What is the leave policy?"
+    query = "If I spend $120 per day for 3 days, how much reimbursement?"
+    # For the next query,  print the docs+scores and then adjust the threshold value.
+    # query = "What is the leave policy?"
     result = app.invoke({
         "messages": [HumanMessage(content=query)],
         "retry_count": 0,

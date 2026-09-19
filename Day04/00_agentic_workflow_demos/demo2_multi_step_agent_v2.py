@@ -281,6 +281,8 @@ if __name__ == "__main__":
 # Can I work from home?
 # How many days can i work from home?
 
-# Retrieval Retry:
+# May Hallucinate:
 # Tell me about company spending
+
+# Retrieval Retry:
 # What is the annual bonus percentage?

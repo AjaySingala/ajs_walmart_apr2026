@@ -1,6 +1,6 @@
 """
-Demo 1: Evaluation, Observability & Cost Awareness
-Builds directly on: demo3_langgraph_agent_chatbot.py
+Demo 2: Performance, latency and cost optimzation.
+
 
 Adds:
 - Output evaluation
