@@ -83,5 +83,5 @@ tokens = encoding.encode(prompt)
 
 print("\nPrompt:", prompt)
 print("Token count:", len(tokens))
-for t in tokens:
-    print(f"{t} -> '{encoding.decode([t])}'")
+# for t in tokens:
+#     print(f"{t} -> '{encoding.decode([t])}'")
