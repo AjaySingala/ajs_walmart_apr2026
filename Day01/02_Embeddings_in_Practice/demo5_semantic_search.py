@@ -62,6 +62,7 @@ def cosine_similarity(vec1, vec2):
 
 # -----------------------------
 # Step 4: Query Input
+# Query Embedding.
 # -----------------------------
 query = "How does AI help in supply chain?"
 # query = "inventory optimization using AI"
@@ -105,7 +106,7 @@ for result in results:
     print("-" * 50)
 
 # Show Top-K Results Only
-top_k = 2
+top_k = 3
 print("\n" + "=" * 50)
 print("\n🔍 Query:", query)
 print(f"\nTop-{top_k} Matches:\n")

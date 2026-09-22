@@ -20,7 +20,9 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load document.
 print(f"\n Load document...")
-with open("company_policy.txt", "r", encoding="utf-8") as f:
+# filename = "company_policy.txt" 
+filename = "news.txt" 
+with open(filename, "r", encoding="utf-8") as f:
     document = f.read()
 
 # Chunking.
@@ -43,12 +45,19 @@ def similarity(a, b):
     print(f"\n similarity()...")
     return sum(x*y for x, y in zip(a, b))
 
-# Query
-query = "What is the meal allowance for employees?"
+# Company Policy Query.
+# query = "What is the meal allowance for employees?"
 # query = "What is the internet reimbursement policy?"
 # query = "Can i order 2 meals worth ₹1500 each on the same day?"
 # query = "What is GDP?"
 # query = "What is the cap on hotel stay?"
+
+# News Query.
+query = "What did the UN chief say?"
+# query = "What is the news on Iran?"
+# query = "What is Today's news on Iran?"
+# query = "What can you tell me about diesel?"
+# query = "Did anything happen in Japan?"
 
 # Embed query.
 print(f"\n Embed query...")
