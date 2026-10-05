@@ -220,6 +220,7 @@ def retry_node(state: AgentState):
 
     # 🔥 Simple query reformulation
     new_query = last_query + " (more specific, company policy details)"
+    print(f"new query: {new_query}")
 
     return {
         "messages": [HumanMessage(content=new_query)],

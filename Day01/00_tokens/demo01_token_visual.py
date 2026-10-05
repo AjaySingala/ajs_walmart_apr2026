@@ -76,12 +76,12 @@ print(response.choices[0].message.content)
 # plt.ylabel("Current word")
 # plt.show()
 
-# STEP 4: Token count → cost awareness.
-prompt = "Explain how AI helps in fraud detection in banking."
+# # STEP 4: Token count → cost awareness.
+# prompt = "Explain how AI helps in fraud detection in banking."
 
-tokens = encoding.encode(prompt)
+# tokens = encoding.encode(prompt)
 
-print("\nPrompt:", prompt)
-print("Token count:", len(tokens))
-for t in tokens:
-    print(f"{t} -> '{encoding.decode([t])}'")
+# print("\nPrompt:", prompt)
+# print("Token count:", len(tokens))
+# # for t in tokens:
+# #     print(f"{t} -> '{encoding.decode([t])}'")

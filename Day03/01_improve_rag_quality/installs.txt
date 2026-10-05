@@ -1,5 +1,5 @@
-pip install openai python-dotenv chromadb
+python -m pip install openai python-dotenv chromadb
 
 # For demo8.
-pip install PyPDF2
-pip install faiss-cpu
+python -m pip install PyPDF2
+python -m pip install faiss-cpu

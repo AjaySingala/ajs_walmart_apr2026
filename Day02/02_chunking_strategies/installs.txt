@@ -1,10 +1,10 @@
-pip install openai python-dotenv
+python -m pip install openai python-dotenv
 
 # For demo12.
-pip install faiss
-pip install pypdf
+python -m pip install faiss
+python -m pip install pypdf
 
 # For demo12 on VM:
-pip install faiss-cpu
+python -m pip install faiss-cpu
 
 

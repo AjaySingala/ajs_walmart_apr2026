@@ -1,2 +1,2 @@
-pip install openai numpy matplotlib seaborn tiktoken
-pip install python-dotenv
+python -m pip install openai numpy matplotlib seaborn tiktoken
+python -m pip install python-dotenv

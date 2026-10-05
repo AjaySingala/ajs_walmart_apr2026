@@ -48,6 +48,7 @@ def rag_search(query: str) -> str:
         return "No relevant information found."
     return "\n".join([d.page_content for d in docs])
 
+
 # -------------------------
 # STEP 4: LLM
 # -------------------------

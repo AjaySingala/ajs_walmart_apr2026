@@ -64,8 +64,8 @@ def rag_search(query: str) -> str:
     """Search company policy with filtering"""
     # print(f"\n rag_search()...")
     results = vectorstore.similarity_search_with_score(query, k=2)
-    # for doc, score in results:
-    #     print(f"content: {doc.page_content} (Score: {score})")
+    for doc, score in results:
+        print(f"content: {doc.page_content} (Score: {score})")
 
     if not results:
         return "NO_CONTEXT"

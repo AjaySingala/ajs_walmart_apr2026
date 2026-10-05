@@ -106,9 +106,9 @@ print("\nAnswer (Unfiltered):")
 print(generate_answer(query, docs))
 
 # With filter
-docs_filtered = search(query, filters={"region": "India"})
-print("\nAnswer (Filtered - India):")
-# docs_filtered = search(query, filters={"category": "marketing"})
-# print("\nAnswer (Filtered - Marketing):")
+# docs_filtered = search(query, filters={"region": "India"})
+# print("\nAnswer (Filtered - India):")
+docs_filtered = search(query, filters={"category": "marketing"})
+print("\nAnswer (Filtered - Marketing):")
 
 print(generate_answer(query, docs_filtered))

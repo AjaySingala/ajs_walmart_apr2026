@@ -21,6 +21,7 @@ class LLMWrapper:
         self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.model = model
 
+
     def generate(
         self,
         system_prompt: str,
