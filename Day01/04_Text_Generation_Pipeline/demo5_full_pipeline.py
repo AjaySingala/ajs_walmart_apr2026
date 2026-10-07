@@ -54,7 +54,6 @@ class TextGenerationPipeline(BasePipeline):
         )
         return response.output_text
 
-
 # ================================
 # 3. EMBEDDING PIPELINE
 # ================================
@@ -104,6 +103,7 @@ class GenAIPipeline:
 
     def run_text_task(self, task: str, data: str) -> Dict[str, Any]:
         prompt = self.io_handler.format_prompt(task, data)
+        print(f"Prompt: {prompt}")
         result = self.text_pipeline.generate(prompt)
         return self.io_handler.format_output(result)
 
@@ -127,6 +127,9 @@ if __name__ == "__main__":
     task = "Analyze retail sales trends"
     data = "Electronics +15%, Apparel -5%, Grocery +8%"
 
+    print("\n")
+    print(f"Task: {task}")
+    print(f"Data: {data}\n")
     text_result = pipeline.run_text_task(task, data)
     print(text_result)
 
@@ -138,6 +141,9 @@ if __name__ == "__main__":
         "Demand forecasting improves supply chain efficiency."
     ]
 
+    print("\n")
+    print(f"Text: {texts}\n")
+
     embedding_result = pipeline.run_embedding_task(texts)
     print(embedding_result)
 
@@ -147,6 +153,8 @@ if __name__ == "__main__":
         "This is statement 2.",
         "This is statement 3."
     ]
+    print("\n")
+    print(f"Text: {texts}\n")
 
     embedding_result = pipeline.run_embedding_task(texts)
     print(embedding_result)

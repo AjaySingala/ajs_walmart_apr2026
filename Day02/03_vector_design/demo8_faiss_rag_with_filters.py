@@ -68,6 +68,9 @@ def search(query, top_k=5, filters=None):
 
         results.append(doc)
 
+    # print(f"Results: {results}")
+    # print(f"Results: {results[:2]}")
+
     return results[:2]
 
 def generate_answer(query, docs):

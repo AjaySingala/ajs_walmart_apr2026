@@ -97,7 +97,8 @@ def call_llm_with_logging(prompt: str, retries: int = 3, timeout: int = 10) -> s
         # Backoff before retry
         time.sleep(2 ** attempt)
 
-    # Final fallback
+    # Final fallback.
+    # Alternative could be to make a call to another model/LLM.
     fallback = (
         "We're currently experiencing high demand. "
         "Please try again shortly."

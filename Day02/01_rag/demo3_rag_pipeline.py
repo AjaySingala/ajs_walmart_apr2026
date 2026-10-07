@@ -20,8 +20,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load document.
 print(f"\n Load document...")
-# filename = "company_policy.txt" 
-filename = "news.txt" 
+filename = "company_policy.txt" 
+# filename = "news.txt" 
 with open(filename, "r", encoding="utf-8") as f:
     document = f.read()
 
@@ -46,14 +46,14 @@ def similarity(a, b):
     return sum(x*y for x, y in zip(a, b))
 
 # Company Policy Query.
-# query = "What is the meal allowance for employees?"
+query = "What is the meal allowance for employees?"
 # query = "What is the internet reimbursement policy?"
 # query = "Can i order 2 meals worth ₹1500 each on the same day?"
 # query = "What is GDP?"
 # query = "What is the cap on hotel stay?"
 
 # News Query.
-query = "What did the UN chief say?"
+# query = "What did the UN chief say?"
 # query = "What is the news on Iran?"
 # query = "What is Today's news on Iran?"
 # query = "What can you tell me about diesel?"
@@ -77,8 +77,8 @@ print(f"\n BEST CHUNK:\n {best_chunk}")
 
 # Augment prompt with retrieved context.
 augmented_prompt = f"""
-Answer the question using ONLY the context below.
 If the answer is not in the context, say "I don't know".
+Answer the question using ONLY the context below.
 
 Context:
 {best_chunk}

@@ -6,5 +6,3 @@ python -m pip install pypdf
 
 # For demo12 on VM:
 python -m pip install faiss-cpu
-
-
